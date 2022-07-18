@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour
         disToGround = gameObject.GetComponent<Collider>().bounds.extents.y + 0.3f;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
 
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -33,8 +33,8 @@ public class MovementController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-            gameObject.transform.position = transform.position + Vector3.up * jumpForce * Time.deltaTime;
-            //rb.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
+            //gameObject.transform.position = transform.position + Vector3.up * jumpForce * Time.deltaTime;
+            rb.AddForce(Vector3.up * jumpForce/* * Time.deltaTime*/, ForceMode.Impulse);
         }
     }
 
