@@ -34,7 +34,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             //gameObject.transform.position = transform.position + Vector3.up * jumpForce * Time.deltaTime;
-            rb.AddForce(Vector3.up * jumpForce/* * Time.deltaTime*/, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
         }
     }
 
@@ -45,11 +45,13 @@ public class MovementController : MonoBehaviour
 
         //move by transform
         Vector3 newPos = transform.position + (dir * force * Time.deltaTime);
-        transform.position = newPos;
+        //transform.position = newPos;
 
 
         //move with force
         //rb.AddForce(dir * force * Time.deltaTime);
+
+        //rb.MovePosition(dir * force * Time.deltaTime + transform.position);
     }
 
     private bool IsGrounded()
